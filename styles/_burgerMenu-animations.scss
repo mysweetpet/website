@@ -1,0 +1,67 @@
+// Burger Menu Animation
+.close1{
+    animation: close1 ease .3s forwards
+}
+.close2{
+    animation: close2 ease .3s forwards
+}
+.close3{
+    animation: close3 ease .3s forwards
+}
+@keyframes close1 {
+   0%{
+       transform: rotate(0deg) 
+   }
+   100%{
+       transform: translateY(5px) rotate(45deg)
+   }
+}
+@keyframes close2 {
+    0%{
+        opacity: 1;
+    }
+    100%{
+        opacity: 0;
+    }
+}
+@keyframes close3 {
+    0%{
+        transform: rotate(0deg)
+    }
+    100%{
+        transform: translateY(-7px) rotate(-45deg)
+    }
+}
+.open1{
+    animation: open1 ease .3s forwards
+}
+.open2{
+    animation: open2 ease .3s forwards
+}
+.open3{
+    animation: open3 ease .3s forwards
+}
+@keyframes open1 {
+   0%{
+       transform: translateY(5px) rotate(45deg) 
+   }
+   100%{
+       transform: translateY(0) rotate(0deg)
+   }
+}
+@keyframes open2 {
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}
+@keyframes open3 {
+    0%{
+        transform: translateY(-7px) rotate(-45deg) 
+    }
+    100%{
+        transform: translateY(0px) rotate(0deg)
+    }
+}

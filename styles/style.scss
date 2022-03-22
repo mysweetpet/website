@@ -1,0 +1,168 @@
+// --- Font Import ---
+@use "./burgerMenu-animations";
+@use "./menuLinks-behavior";
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;700&display=swap');
+
+// --- Variables ---
+$primary: hsla(339, 67%, 52%, 1);
+$secondary: hsla(255, 53%, 50%, 1);
+$neutral: hsla(210, 9%, 31%, 1);
+
+// --- Mixins ---
+// Bootstrap device grid size
+@mixin device-size($device){
+    @if $device == xs{
+        @media (max-width: 575px){ @content }
+    } @else if $device == sm{
+        @media (min-width: 576px){ @content }
+    } @else if $device == md{
+        @media (min-width: 768px) { @content }
+    } @else if $device == lg{
+        @media (min-width: 992px) { @content }
+    } @else if $device == xl{
+        @media (min-width: 1200) { @content }
+    }
+}
+
+// Flex mixins
+@mixin flex($jst, $alg){
+    display: flex;
+    justify-content: $jst;
+    align-items: $alg;
+}
+@mixin flex-center {
+    @include flex(center, center)
+}
+
+// Reset
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Rubik', sans-serif;
+}
+
+body{
+    height: 100vh;
+    font-size: 16px;
+}
+
+.nav{
+    width: 100%;
+    padding: 1em;
+    background: hsla(252, 100%, 97%, 1);
+    @include flex(space-between, center);
+
+    &_logo{
+        display: none;
+        max-width: 20%;
+        @include device-size(sm){
+            display: inline-block;
+        }
+    }
+
+    &_logo-mobile{
+        width: 32px;
+        height: 32px;
+        @include device-size(sm){
+            display: none;
+        }
+    }
+
+    &_burger{
+        border: none;
+        @include device-size(sm){
+            display: none;
+        }
+
+        &_checkbox{
+            display: none;
+        }
+
+        .line{
+            height: 2px;
+            width: 20px;
+            background-color: $secondary;
+            border: none;
+            border-radius: 10px;
+        }
+        .line:not(:first-child){
+            margin-top: 4px;
+        }
+    }
+
+    &_menu{
+        @include device-size(xs){
+            width: 100%;
+            background-color: hsla(252, 100%, 97%, 1);
+            border: none;
+            padding: 1em 0px;
+            position: absolute;
+            top: 3em;
+            left: 0;
+            opacity: 0;
+        }
+
+        &_link{
+            list-style-type: none;
+            @include device-size(xs){
+                width: 100%;
+                padding: .3em 1em;
+            }
+            @include device-size(sm){
+                display: inline-block;
+                margin-left: 10px;
+                margin-right: 10px;
+            }
+        }
+    }
+}
+
+.hero{
+    width: 100%;
+    min-height: 40vh;
+    padding: 1.25em;
+    background-color: hsla(252, 100%, 97%, 1);
+    @include flex(center, flex-start);
+
+    @include device-size(xs){
+        @include flex(space-between, flex-start);
+        flex-direction: column;
+    }
+
+    &_text{
+        margin-bottom: 1em;
+        font-size: 1.25em;
+        font-weight: 300;
+        line-height: 28px;
+        color: $neutral;
+
+        @include device-size(md){
+            margin-bottom: 1.25em;
+            font-size: 2.5em;
+            line-height: 3.5em;
+        }
+    }
+
+    &_title{
+        font-size: 28px;
+        font-weight: 300;
+        color: $secondary;
+        @include device-size(md){
+            font-size: 3.5em;
+        }
+
+        strong{
+            font-weight: 700;
+        }
+    }
+}
+
+// .hero::after{
+//     content: "";
+//     width: 950px;
+//     height: 950px;
+//     position: absolute;
+//     background-color: hsla(339, 67%, 52%, 1);
+//     clip-path: circle(62.1% at 71% 100%);
+// }
